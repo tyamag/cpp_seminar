@@ -10,15 +10,16 @@
 struct TsundereChara {
   TsundereChara(const std::string& name, int tsundere_power)
     : name_(name), tsundere_power_(tsundere_power) {}
-  friend std::ostream& operator<<(std::ostream& out, const TsundereChara& chara) {
-    out << chara.name_ << ", power = " << chara.tsundere_power_;
-    return out;
-  }
   std::string name_;
   int tsundere_power_;
 };
 
-void Tsundere() {
+std::ostream& operator<<(std::ostream& out, const TsundereChara& chara) {
+  out << chara.name_ << ", power = " << chara.tsundere_power_;
+  return out;
+}
+
+int main() {
   using namespace std;
   ifstream ifs("tsundere_list.txt", ios::in);
   vector<TsundereChara> tsundere_list;
@@ -34,8 +35,8 @@ void Tsundere() {
 
   cout << "\n～ツンデレパワー降順ソート～" << "\n";
   vector<TsundereChara> power_sorted(tsundere_list);
-  sort(power_sorted.rbegin(), power_sorted.rend(), [](const TsundereChara& chara1, const TsundereChara& chara2) {
-    return chara1.tsundere_power_ < chara2.tsundere_power_;
+  sort(power_sorted.begin(), power_sorted.end(), [](const TsundereChara& chara1, const TsundereChara& chara2) {
+    return chara1.tsundere_power_ > chara2.tsundere_power_;
   });
   copy(power_sorted.cbegin(), power_sorted.cend(), ostream_iterator<TsundereChara>(cout, "\n"));
 
@@ -52,13 +53,10 @@ void Tsundere() {
     return chara1.name_ < chara2.name_;
   });
   auto unique_end = unique(uniqued.begin(), uniqued.end(), [](const TsundereChara& chara1, const TsundereChara& chara2) {
-    return chara1.name_ == chara2.name_;
+    return chara1.name_ == chara2.name_
+      && chara1.tsundere_power_ == chara2.tsundere_power_;
   });
   copy(uniqued.begin(), unique_end, ostream_iterator<TsundereChara>(cout, "\n"));
-}
-
-int main() {
-  Tsundere();
 
   return 0;
 }
