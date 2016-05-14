@@ -7,7 +7,7 @@
 #include <list>
 #include <unordered_map>
 
-void code1() {
+void Code1() {
   // C言語での文字列の長さ取得
   const char* c_str = "I like C.";
   std::cout << c_str << ": length = " << std::strlen(c_str) << "\n";  // 関数を使う
@@ -50,14 +50,14 @@ private:
   int hp_;            // ヒットポイント
 };
 
-void code2() {
+void Code2() {
   Player player("ロト", 10);
   std::cout << player.name() << " hp = " << player.hp() << "\n";
   player.set_hp(1);
   std::cout << player.name() << " hp = " << player.hp() << "\n";
 }
 
-void code3() {
+void Code3() {
   std::vector<int> i_vec = {1, 2, 3};                // intを格納するvector
   std::vector<double> d_vec = {1.0, 1.414, 1.7325};  // doubleを格納するvector
   for (auto num : i_vec) std::cout << num << " ";
@@ -74,7 +74,7 @@ T Sum(const Range& range, T init) {
   return init;
 }
 
-void code4() {
+void Code4() {
   int i_array[] = {1, 2, 3};
   std::cout << Sum(i_array, 0) << "\n";
   std::vector<int> i_vec = {4, 5, 6};
@@ -94,7 +94,7 @@ void PrintRange(const Range& range) {
   std::cout << "]\n";
 }
 
-void code5() {
+void Code5() {
   int i_array[] = {1, 2, 3};
   PrintRange(i_array);
   std::vector<int> i_vec = {4, 5, 6};
@@ -117,7 +117,7 @@ private:
   T* ptr_;
 };
 
-void code6() {
+void Code6() {
   MyContainer<int> i_container(2);
   i_container[0] = 0;
   i_container[1] = 1;
@@ -126,7 +126,7 @@ void code6() {
   }
 }
 
-void code7() {
+void Code7() {
   std::vector<int> i_vec;  // 動的配列 vector
   i_vec.push_back(666);  // vectorの末尾に要素を追加
   i_vec.push_back(9999);
@@ -148,7 +148,7 @@ void code7() {
   }
 }
 
-void code8() {
+void Code8() {
   std::vector<int> i_vec = {1, 2, 3};
   // 1. 添え字で全走査(データ構造に依存)
   for (size_t i = 0; i < i_vec.size(); ++i) std::cout << i_vec[i] << " ";
@@ -163,7 +163,7 @@ void code8() {
   std::cout << "\n";
 }
 
-void code9() {
+void Code9() {
   std::vector<int> i_vec = {3, 2, 1};
   // vectorの合計を計算
   std::cout << std::accumulate(i_vec.begin(), i_vec.end(), 0) << "\n";
