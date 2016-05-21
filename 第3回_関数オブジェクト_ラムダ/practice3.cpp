@@ -16,15 +16,15 @@ void Calculation() {
   const string prompt = "> ";
   cout << "input code like this: + 1 2\n";
   while (true) {
-    std::cout << prompt;
+    cout << prompt;
     string opcode;
     int arg1, arg2;
     cin >> opcode >> arg1 >> arg2;
     if (opcode_map.find(opcode) == opcode_map.end()) {
-      std::cerr << "error: \"" << opcode << "\" is not opcode!\n";
+      cerr << "error: \"" << opcode << "\" is not opcode!\n";
       continue;
     }
-    std::cout << opcode_map.at(opcode)(arg1, arg2) << "\n";
+    cout << opcode_map.at(opcode)(arg1, arg2) << "\n";
   }
 }
 
